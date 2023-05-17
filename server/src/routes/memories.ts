@@ -1,7 +1,5 @@
-import { PrismaClient } from '@prisma/client'
 import { FastifyInstance } from 'fastify'
-
-const prisma = new PrismaClient()
+import { prisma } from '../lib/prisma'
 
 export async function memoriesRoutes(app: FastifyInstance) {
   app.get('/users', async () => {
