@@ -1,10 +1,13 @@
 import { FastifyInstance } from 'fastify'
-import { prisma } from '../lib/prisma'
 
 export async function memoriesRoutes(app: FastifyInstance) {
-  app.get('/users', async () => {
-    const Users = await prisma.user.findMany()
+  app.get('/memories', async () => {})
 
-    return Users
-  })
+  app.get('/memories/:id', async () => {})
+
+  app.post('/memories', async () => {})
+
+  app.put('/memories/:id', async () => {})
+
+  app.delete('/memories/:id', async () => {})
 }
