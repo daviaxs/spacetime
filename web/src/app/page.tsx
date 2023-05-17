@@ -1,3 +1,5 @@
+import { User } from 'lucide-react'
+
 export default function Home() {
   return (
     <main className="grid min-h-screen grid-cols-2">
@@ -8,7 +10,9 @@ export default function Home() {
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes" />
 
         <a href="" className="flex items-center gap-3 text-left">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400"></div>
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
+            <User className="h-5 w-5 text-gray-500" />
+          </div>
         </a>
       </div>
 
