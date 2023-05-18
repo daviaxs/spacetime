@@ -1,7 +1,8 @@
 import { User } from 'lucide-react'
 import Image from 'next/image'
 
-import SpacetimeLogo from '../assets/nlw-spacetime-logo.svg'
+import { Copyright } from '@/shared/components/Copyright'
+import SpacetimeLogo from '../shared/assets/nlw-spacetime-logo.svg'
 
 export default function Home() {
   return (
@@ -13,7 +14,11 @@ export default function Home() {
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes" />
 
         {/* Sign in */}
-        <a href="" className="flex items-center gap-3 text-left">
+        <a
+          href={`https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`}
+          className="flex items-center gap-3 text-left"
+          rel="noreferrer"
+        >
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-400">
             <User className="h-5 w-5 text-gray-500" />
           </div>
@@ -25,7 +30,7 @@ export default function Home() {
         </a>
 
         {/* Hero */}
-        <div className="space-y-5">
+        <div className="mt-11 space-y-5">
           <Image src={SpacetimeLogo} alt="Logo spacetime" />
 
           <div className="max-w-[420px] space-y-1">
@@ -47,17 +52,7 @@ export default function Home() {
         </div>
 
         {/* Copyright */}
-        <div className="text-sm leading-relaxed text-gray-200">
-          Feito com 💜 no NLW da{' '}
-          <a
-            href="https://rocketseat.com.br"
-            className="underline hover:text-gray-100"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Rocketseat
-          </a>
-        </div>
+        <Copyright />
       </div>
 
       {/* Right */}
