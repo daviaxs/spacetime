@@ -1,5 +1,5 @@
 import { api } from '@/lib/api'
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -11,4 +11,7 @@ export async function GET(request: NextRequest) {
 
   const token = registerResponse.data
 
+  const redirectURL = new URL('/', request.url)
+
+  return NextResponse.redirect(redirectURL)
 }
