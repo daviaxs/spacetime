@@ -11,5 +11,12 @@ export async function uploadRoutes(app: FastifyInstance) {
     if (!upload) {
       return reply.status(400).send()
     }
+
+    const mimeTypeRegex = /^(image|video)\/[a-zA-Z]+/
+    const isValidFileFormat = mimeTypeRegex.test(upload.mimetype)
+
+    if (!isValidFileFormat) {
+      return reply.status(400).send()
+    }
   })
 }
