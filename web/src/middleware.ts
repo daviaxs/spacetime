@@ -1,7 +1,15 @@
-import { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+
+const signInURL = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
 
 export function middleware(request: NextRequest) {
-  console.log('Middlaware')
+  const token = request.cookies.get('token')?.value
+
+  if (!token) {
+    return NextResponse.redirect(signInURL)
+  }
+
+  return NextResponse.next()
 }
 
 export const config = {
