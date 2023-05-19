@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto'
+import { extname } from 'node:path'
 import { FastifyInstance } from 'fastify'
 
 export async function uploadRoutes(app: FastifyInstance) {
@@ -18,5 +20,10 @@ export async function uploadRoutes(app: FastifyInstance) {
     if (!isValidFileFormat) {
       return reply.status(400).send()
     }
+
+    const fileId = randomUUID()
+    const extension = extname(upload.filename)
+
+    const fileName = fileId.concat(extension)
   })
 }
