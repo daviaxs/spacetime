@@ -1,4 +1,4 @@
-import { ChevronLeft } from 'lucide-react'
+import { Camera, ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 
 export default function NewMemory() {
@@ -11,6 +11,28 @@ export default function NewMemory() {
         <ChevronLeft />
         voltar à timeline
       </Link>
+
+      <form className="flex flex-1 flex-col gap-2">
+        <div>
+          <label
+            htmlFor="media"
+            className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 transition-colors hover:text-gray-100"
+          >
+            <Camera className="h-4 w-4" />
+            Adicionar mídia
+          </label>
+
+          <label
+            htmlFor="isPublic"
+            className="flex items-center gap-1.5 text-sm text-gray-200 transition-colors hover:text-gray-100"
+          >
+            <input type="checkbox" name="isPublic" id="isPublic" value="true" />
+            Tornar mídia pública
+          </label>
+        </div>
+
+        <input type="file" id="media" className="invisible" />
+      </form>
     </div>
   )
 }
