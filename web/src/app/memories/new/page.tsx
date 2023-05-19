@@ -1,3 +1,16 @@
+import { ChevronLeft } from 'lucide-react'
+import Link from 'next/link'
+
 export default function NewMemory() {
-  return <h1>Hello world</h1>
+  return (
+    <div className="flex flex-1 flex-col gap-4">
+      <Link
+        href="/"
+        className="flex items-center gap-1 text-sm text-gray-200 transition-colors hover:text-gray-100"
+      >
+        <ChevronLeft />
+        voltar à timeline
+      </Link>
+    </div>
+  )
 }
