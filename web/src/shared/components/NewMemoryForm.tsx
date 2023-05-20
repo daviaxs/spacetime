@@ -3,6 +3,7 @@
 import { api } from '@/lib/api'
 import { Camera } from 'lucide-react'
 import { FormEvent } from 'react'
+import Cookie from 'js-cookie'
 import { MediaPicker } from './MediaPicker'
 
 export function NewMemoryForm() {
@@ -13,14 +14,22 @@ export function NewMemoryForm() {
 
     const fileToUpload = formData.get('coverUrl')
 
+    let coverUrl = ''
+
     if (fileToUpload) {
       const uploadFormData = new FormData()
       uploadFormData.set('file', fileToUpload)
 
       const uploadResponse = await api.post('/upload', uploadFormData)
 
-      console.log(uploadResponse)
+      coverUrl = uploadResponse.data.fileUrl
     }
+
+    await api.post('/memories', {
+      coverUrl,
+      content: formData.get('content'),
+      isPublic: formData.get('isPublic'),
+    })
   }
 
   return (
