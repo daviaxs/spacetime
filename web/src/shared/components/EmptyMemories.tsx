@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers'
 import Link from 'next/link'
 
-const signInURL = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
+// const signInURL = `https://github.com/login/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID}`
 
 export function EmptyMemories() {
   const isAuthenticated = cookies().has('token')
@@ -21,7 +21,7 @@ export function EmptyMemories() {
       ) : (
         <p className="w-[360px] text-center leading-relaxed">
           <Link
-            href={signInURL}
+            href="/memories/new"
             className="underline transition-colors hover:text-gray-50"
           >
             Crie sua conta
