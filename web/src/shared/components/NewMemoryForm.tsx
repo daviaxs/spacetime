@@ -1,14 +1,20 @@
 'use client'
 
 import { Camera } from 'lucide-react'
+import { FormEvent } from 'react'
 import { MediaPicker } from './MediaPicker'
 
 export function NewMemoryForm() {
+  function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+
+    console.log(Array.from(formData.entries()))
+  }
+
   return (
-    <form
-      onSubmit={(event) => console.log(event)}
-      className="flex flex-1 flex-col gap-2"
-    >
+    <form onSubmit={handleCreateMemory} className="flex flex-1 flex-col gap-2">
       <div className="flex flex-row gap-4">
         <label
           htmlFor="media"
