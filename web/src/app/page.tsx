@@ -2,8 +2,10 @@ import { api } from '@/lib/api'
 import { EmptyMemories } from '@/shared/components/EmptyMemories'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
+import { ArrowRight } from 'lucide-react'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
+import Link from 'next/link'
 
 dayjs.locale(ptBr)
 
@@ -50,6 +52,18 @@ export default async function Home() {
               width={592}
               height={280}
             />
+
+            <p className="text-lg leading-relaxed text-gray-100">
+              {memory.excerpt}
+            </p>
+
+            <Link
+              href={`/memories/${memory.id}`}
+              className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
+            >
+              Ler mais
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         )
       })}
