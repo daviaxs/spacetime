@@ -22,5 +22,7 @@ export default async function Home() {
     return <EmptyMemories />
   }
 
-  return <div>{JSON.stringify(memories)}</div>
+  return (
+    <div className="flex flex-col gap-10 p-8">{JSON.stringify(memories)}</div>
+  )
 }
