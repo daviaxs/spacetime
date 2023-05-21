@@ -4,10 +4,26 @@ import { api } from '@/lib/api'
 import Cookie from 'js-cookie'
 import { Camera } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { FormEvent } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { MediaPicker } from './MediaPicker'
 
 export function NewMemoryForm() {
+  const [textareaContent, setTextareaContent] = useState<string>('')
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true)
+
+  useEffect(() => {
+    if (textareaContent === '') {
+      setIsButtonDisabled(true)
+    } else {
+      setIsButtonDisabled(false)
+    }
+  }, [textareaContent])
+
+  function handleInputTextarea(event: FormEvent<HTMLTextAreaElement>) {
+    setTextareaContent(event.currentTarget.value)
+    console.log(textareaContent)
+  }
+
   const router = useRouter()
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
@@ -77,14 +93,21 @@ export function NewMemoryForm() {
 
       <textarea
         name="content"
+        value={textareaContent}
+        onInput={handleInputTextarea}
         spellCheck={false}
         placeholder="Fique livre para adicionar fotos, vídeos e relatos sobre essa experiência que você quer lembrar para sempre."
         className="w-full flex-1 resize-none rounded border-0 bg-transparent p-0 text-lg leading-relaxed text-gray-100 placeholder:text-gray-400 focus:ring-0"
       />
 
       <button
-        className="inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black transition-colors hover:bg-green-600"
+        className={`${
+          isButtonDisabled
+            ? 'cursor-no-drop bg-red-500 opacity-50 hover:bg-red-600'
+            : null
+        } inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black transition-colors hover:bg-green-600`}
         type="submit"
+        disabled={isButtonDisabled}
       >
         Salvar
       </button>
