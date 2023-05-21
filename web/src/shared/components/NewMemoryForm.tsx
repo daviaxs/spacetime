@@ -103,7 +103,7 @@ export function NewMemoryForm() {
       <button
         className={`${
           isButtonDisabled
-            ? 'cursor-no-drop bg-red-500 opacity-50 hover:bg-red-600'
+            ? 'cursor-no-drop bg-red-500 opacity-50 hover:bg-red-400'
             : null
         } inline-block self-end rounded-full bg-green-500 px-5 py-3 font-alt text-sm uppercase leading-none text-black transition-colors hover:bg-green-600`}
         type="submit"
