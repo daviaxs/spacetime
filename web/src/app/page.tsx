@@ -1,8 +1,9 @@
 import { api } from '@/lib/api'
 import { EmptyMemories } from '@/shared/components/EmptyMemories'
-import { cookies } from 'next/headers'
 import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
+import { cookies } from 'next/headers'
+import Image from 'next/image'
 
 dayjs.locale(ptBr)
 
@@ -41,6 +42,14 @@ export default async function Home() {
             <time className="-ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
               {dayjs(memory.createdAt).format('D[ de ]MMMM[, ]YYYY')}
             </time>
+
+            <Image
+              src={memory.coverUrl}
+              alt=""
+              className="aspect-video w-full rounded-lg object-cover"
+              width={592}
+              height={280}
+            />
           </div>
         )
       })}
