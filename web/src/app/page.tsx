@@ -40,7 +40,7 @@ export default async function Home() {
     <div className="flex flex-col gap-10 p-8">
       {memories.map((memory) => {
         return (
-          <div key={memory.id} className="space-y-4">
+          <div key={memory.id} className="space-y-4 overflow-x-hidden">
             <time className="-ml-8 flex items-center gap-2 text-sm text-gray-100 before:h-px before:w-5 before:bg-gray-50">
               {dayjs(memory.createdAt).format('D[ de ]MMMM[, ]YYYY')}
             </time>
