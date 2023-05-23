@@ -7,7 +7,7 @@ export default function NewMemory() {
     <div className="flex flex-1 flex-col gap-4 p-16">
       <Link
         href="/"
-        className="flex items-center gap-1 text-sm text-gray-200 transition-colors hover:text-gray-100"
+        className="-ml-2 flex items-center gap-1 text-sm text-gray-200 opacity-50 transition-opacity hover:opacity-100"
       >
         <ChevronLeft />
         voltar à timeline
