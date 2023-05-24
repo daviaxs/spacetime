@@ -103,6 +103,10 @@ export default function EditMemory() {
           />
           Tornar mídia pública
         </label>
+
+        <IconButton>
+          <Trash2 width={20} height={20} />
+        </IconButton>
       </div>
 
       <MediaPicker />
