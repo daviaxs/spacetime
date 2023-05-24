@@ -1,9 +1,10 @@
 'use client'
 
 import { api } from '@/lib/api'
+import { IconButton } from '@/shared/components/IconButton'
 import { MediaPicker } from '@/shared/components/MediaPicker'
 import Cookie from 'js-cookie'
-import { Camera, ChevronLeft } from 'lucide-react'
+import { Camera, ChevronLeft, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { FormEvent, useEffect, useState } from 'react'
