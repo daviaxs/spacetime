@@ -81,30 +81,32 @@ export default function EditMemory() {
         voltar à timeline
       </Link>
 
-      <div className="flex flex-row gap-4">
-        <label
-          htmlFor="media"
-          className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 transition-colors hover:text-gray-100"
-        >
-          <Camera className="h-4 w-4" />
-          Adicionar mídia
-        </label>
+      <div className="flex flex-row justify-between gap-4">
+        <span className="flex items-center justify-start gap-4">
+          <label
+            htmlFor="media"
+            className="flex cursor-pointer items-center gap-1.5 text-sm text-gray-200 transition-colors hover:text-gray-100"
+          >
+            <Camera className="h-4 w-4" />
+            Adicionar mídia
+          </label>
 
-        <label
-          htmlFor="isPublic"
-          className="flex items-center gap-1.5 text-sm text-gray-200 transition-colors hover:text-gray-100"
-        >
-          <input
-            type="checkbox"
-            name="isPublic"
-            id="isPublic"
-            value="true"
-            className="h-4 w-4 rounded border-gray-400 bg-gray-600 text-purple-500"
-          />
-          Tornar mídia pública
-        </label>
+          <label
+            htmlFor="isPublic"
+            className="flex items-center gap-1.5 text-sm text-gray-200 transition-colors hover:text-gray-100"
+          >
+            <input
+              type="checkbox"
+              name="isPublic"
+              id="isPublic"
+              value="true"
+              className="h-4 w-4 rounded border-gray-400 bg-gray-600 text-purple-500"
+            />
+            Tornar mídia pública
+          </label>
+        </span>
 
-        <IconButton>
+        <IconButton onClick={handleDeleteMemory}>
           <Trash2 width={20} height={20} />
         </IconButton>
       </div>
