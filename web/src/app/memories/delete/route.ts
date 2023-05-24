@@ -13,7 +13,9 @@ export function useDeleteMemory({ id, token }: IUseDeleteMemoryProps) {
     await api.delete(`/memories/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
       },
+      data: JSON.stringify({ id }),
     })
 
     router.push('/')
