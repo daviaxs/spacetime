@@ -8,6 +8,7 @@ import { Camera, ChevronLeft, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { FormEvent, useEffect, useState } from 'react'
+import { useDeleteMemory } from '../../delete/route'
 
 export default function EditMemory() {
   const [textareaContent, setTextareaContent] = useState<string>('')
@@ -60,13 +61,15 @@ export default function EditMemory() {
     )
   }
 
-  async function handleDeleteMemory() {
-    await api.delete(`/memories/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-  }
+  const deleteMemory = useDeleteMemory({ id, token })
+
+  // async function handleDeleteMemory() {
+  //   await api.delete(`/memories/${id}`, {
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  // }
 
   return (
     <form
@@ -106,7 +109,7 @@ export default function EditMemory() {
           </label>
         </span>
 
-        <IconButton onClick={handleDeleteMemory}>
+        <IconButton onClick={deleteMemory}>
           <Trash2 width={20} height={20} />
         </IconButton>
       </div>
