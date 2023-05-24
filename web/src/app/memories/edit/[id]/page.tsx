@@ -63,14 +63,6 @@ export default function EditMemory() {
 
   const deleteMemory = useDeleteMemory({ id, token })
 
-  // async function handleDeleteMemory() {
-  //   await api.delete(`/memories/${id}`, {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  // }
-
   return (
     <form
       onSubmit={handleEditMemory}

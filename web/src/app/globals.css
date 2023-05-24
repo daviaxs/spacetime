@@ -11,7 +11,7 @@ body {
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
-    scrollbar-width: none;
+    scrollbar-width: 6px;
     scrollbar-color: #ffffff20;
   }
 
@@ -28,4 +28,12 @@ body {
     background-color: #ffffff20;
     border-radius: 10px;
     border: none;
+  }
+
+  body {
+    scrollbar-width: 0px;
+  }
+
+  body::-webkit-scrollbar {
+    width: 0px;
   }
