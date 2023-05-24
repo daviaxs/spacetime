@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios'
 import { FastifyInstance } from 'fastify'
 import { z } from 'zod'
 import { prisma } from '../lib/prisma'
@@ -114,20 +115,28 @@ export async function memoriesRoutes(app: FastifyInstance) {
 
     const { id } = paramsSchema.parse(request.params)
 
-    await prisma.memory.delete({
-      where: {
-        id,
-      },
-    })
+    try {
+      await prisma.memory.delete({
+        where: {
+          id,
+        },
+      })
 
-    const memory = await prisma.memory.findFirstOrThrow({
-      where: {
-        id,
-      },
-    })
+      const memory = await prisma.memory.findFirstOrThrow({
+        where: {
+          id,
+        },
+      })
 
-    if (memory.userId !== request.user.sub) {
-      return reply.status(401).send()
+      if (memory.userId !== request.user.sub) {
+        return reply.status(401).send()
+      }
+    } catch (e) {
+      console.error(
+        `Erro ao deletar a memória: ${(e as AxiosError).code} - ${
+          (e as AxiosError).message
+        }`,
+      )
     }
   })
 }
