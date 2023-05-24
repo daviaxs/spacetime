@@ -12,6 +12,7 @@ export default function EditMemory() {
   const [textareaContent, setTextareaContent] = useState<string>('')
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
   const { id } = useParams()
+  const token = Cookie.get('token')
 
   useEffect(() => {
     if (textareaContent === '') {
@@ -43,8 +44,6 @@ export default function EditMemory() {
       coverUrl = uploadResponse.data.fileUrl
     }
 
-    const token = Cookie.get('token')
-
     await api.patch(
       `/memories/${id}`,
       {
@@ -58,6 +57,14 @@ export default function EditMemory() {
         },
       },
     )
+  }
+
+  async function handleDeleteMemory() {
+    await api.delete(`/memories/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
   }
 
   return (
