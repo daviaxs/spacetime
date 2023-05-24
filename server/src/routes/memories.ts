@@ -68,7 +68,7 @@ export async function memoriesRoutes(app: FastifyInstance) {
     return memory
   })
 
-  app.put('/memories/:id', async (request, reply) => {
+  app.patch('/memories/:id', async (request, reply) => {
     const paramsSchema = z.object({
       id: z.string().uuid(),
     })

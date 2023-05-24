@@ -21,7 +21,6 @@ export function NewMemoryForm() {
 
   function handleInputTextarea(event: FormEvent<HTMLTextAreaElement>) {
     setTextareaContent(event.currentTarget.value)
-    console.log(textareaContent)
   }
 
   const router = useRouter()
